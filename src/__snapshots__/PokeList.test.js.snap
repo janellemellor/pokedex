@@ -1,3 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders PokeList.js correctly 1`] = `<ul />`;
+exports[`renders PokeList.js correctly 1`] = `
+<ul>
+  <li>
+    <div>
+      <h3 />
+      <img
+        alt=""
+      />
+      <p>
+        Type 1: 
+      </p>
+      <p>
+        Type 2: 
+      </p>
+      <p>
+        Ability 1: 
+      </p>
+      <p>
+        Ability 2: 
+      </p>
+    </div>
+  </li>
+</ul>
+`;
