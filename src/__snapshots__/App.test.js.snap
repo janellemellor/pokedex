@@ -10,34 +10,3 @@ exports[`renders App.js correctly 1`] = `
   <ul />
 </div>
 `;
-
-exports[`renders Header.js correctly 1`] = `
-<header>
-  <h2>
-    Pokedex
-  </h2>
-</header>
-`;
-
-exports[`renders PokeItem.js correctly 1`] = `
-<li>
-  <div>
-    <h3 />
-    <img
-      alt=""
-    />
-    <p>
-      Type 1: 
-    </p>
-    <p>
-      Type 2: 
-    </p>
-    <p>
-      Ability 1: 
-    </p>
-    <p>
-      Ability 2: 
-    </p>
-  </div>
-</li>
-`;

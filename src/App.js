@@ -19,7 +19,8 @@ state = { pokemon: [] };
   return (
     <div>
       <Header />
-      <PokeList pokemon={this.state.pokemon ? this.state.pokemon : 'loading'} />
+      <PokeList pokemon={this.state.pokemon} />
+        {/* // ? this.state.pokemon : 'loading'} /> */}
     </div>
   );
 }}
