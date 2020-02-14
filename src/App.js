@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './Header.js';
 import PokeList from './PokeList.js';
-// import pokemon from './data.js';
+import Paging from './Paging.js';
+import SearchPoke from './SearchPoke.js';
 import request from 'superagent';
 
 
 export default class App extends Component {
-state = { pokemon: [] };
+state = { 
+  pokemon: [],
+  search: ''
+};
 
   async componentDidMount() {
     const pokeData = await request.get('https://alchemy-pokedex.herokuapp.com/api/pokedex');
@@ -19,6 +23,7 @@ state = { pokemon: [] };
   return (
     <div>
       <Header />
+      <SearchPoke />
       <PokeList pokemon={this.state.pokemon} />
         {/* // ? this.state.pokemon : 'loading'} /> */}
     </div>
