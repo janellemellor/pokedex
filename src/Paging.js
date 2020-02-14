@@ -7,3 +7,10 @@ export default class Paging extends Component {
         
     }
 }
+
+//ignore the constructor comments- just set state
+// state = {
+//     page: 1
+// }
+
+//

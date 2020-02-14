@@ -14,6 +14,7 @@ state = {
 };
 
   async componentDidMount() {
+    // change my url to append a string to the end to allow for search by name
     const pokeData = await request.get('https://alchemy-pokedex.herokuapp.com/api/pokedex');
    this.setState({ pokemon: pokeData.body.results })
    console.log(this.state.poke);
