@@ -13,7 +13,6 @@ state = { pokemon: [] };
 
 async loadPoke() {
   const response = await getPoke(); 
-  console.log(response);
   const pokemon =  response.results;
   this.setState({ 
     pokemon: pokemon

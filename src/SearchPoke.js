@@ -9,7 +9,9 @@ export default class SearchPoke extends Component {
     });
     }
 
-    state = { searchInput: ''};
+    state = { 
+        searchInput: "",
+};
 
     updateQuery() {
         const queryString = window.location.hash.slice(1);
@@ -17,7 +19,7 @@ export default class SearchPoke extends Component {
         // const name = searchParams.get('pokemon');
 
         this.setState({
-            searchInput: searchParams.get('pokemon=') || '', 
+            searchInput: searchParams.get('pokemon') || "",
         });
     }
 
@@ -32,7 +34,7 @@ export default class SearchPoke extends Component {
         const searchParams = new URLSearchParams(queryString);
 
         // searchParams.set('pokemon', formData.get('pokemon'));
-        searchParams.set('pokemon=', formData.get('search'));
+        searchParams.set('pokemon', formData.get('search'));
 
         window.location.hash = searchParams.toString();
     }
@@ -42,13 +44,13 @@ export default class SearchPoke extends Component {
 
         return( 
         <form className='searchForm' onSubmit={this.handleSubmit}>
-            <label>Search for Pokemon: </label>
+            <label>Search for Pokemon: 
                 <input 
-                    // may need to add an id??
                     name='search'
                     onChange={e => this.setState({ searchInput: e.target.value })}
                     value={this.state.searchInput}    
                 />
+            </label>
             <button>Get Pokemon!</button>    
            
             
