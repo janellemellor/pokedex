@@ -2,30 +2,48 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './Header.js';
 import PokeList from './PokeList.js';
-import Paging from './Paging.js';
+// import Paging from './Paging.js';
 import SearchPoke from './SearchPoke.js';
 import request from 'superagent';
 
 
 export default class App extends Component {
-state = { 
-  pokemon: [],
-  search: ''
-};
+state = { pokemon: [] };
+
+async getPoke() {
+  const pokeData = await request.get('https://alchemy-pokedex.herokuapp.com/api/pokedex');
+  let queryString = window.location.hash.slice(1);
+
+  const newPokeDataUrl = `${pokeData}${queryString}`;
+  const response = await fetch(newPokeDataUrl);
+  const data = await response.json();
+
+  const pokemon =  pokeData.body.search;
+  this.setState({ 
+    pokemon: pokemon
+   });
+
+  return data;
+
+}
 
   async componentDidMount() {
-    // change my url to append a string to the end to allow for search by name
-    const pokeData = await request.get('https://alchemy-pokedex.herokuapp.com/api/pokedex');
-   this.setState({ pokemon: pokeData.body.results })
-   console.log(this.state.poke);
+    await this.getPoke();
+
+    window.addEventListener('hashchange', async () => {
+      await this.getPoke();
+    });
   }  
+
+
   render() {
+    const { pokemon } = this.state;
   
   return (
     <div>
       <Header />
       <SearchPoke />
-      <PokeList pokemon={this.state.pokemon} />
+      <PokeList pokemon={pokemon} />
         {/* // ? this.state.pokemon : 'loading'} /> */}
     </div>
   );
