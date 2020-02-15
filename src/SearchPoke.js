@@ -23,8 +23,6 @@ export default class SearchPoke extends Component {
         });
     }
 
-
-//add an event handler function here called handleSubmit to the form below:
     handleSubmit = e => {
         const form = document.querySelector('form');
         e.preventDefault();

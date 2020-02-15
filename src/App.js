@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './Header.js';
 import PokeList from './PokeList.js';
-// import Paging from './Paging.js';
+import Paging from './Paging.js';
 import SearchPoke from './SearchPoke.js';
-// import request from 'superagent';
 import getPoke from './getPoke.js';
 
 
@@ -14,8 +13,10 @@ state = { pokemon: [] };
 async loadPoke() {
   const response = await getPoke(); 
   const pokemon =  response.results;
+  const totalResults = response.count;
   this.setState({ 
-    pokemon: pokemon
+    pokemon: pokemon,
+    totalResults: totalResults,
    });
 }
 
@@ -29,14 +30,23 @@ async loadPoke() {
 
 
   render() {
-    const { pokemon } = this.state;
+    const { pokemon, totalResults } = this.state;
   
   return (
     <div>
-      <Header />
-      <SearchPoke />
-      <PokeList pokemon={pokemon} />
-        {/* // ? this.state.pokemon : 'loading'} /> */}
+      <header>
+        <Header />
+      </header>
+      <main>
+        <section>
+          <SearchPoke />
+        </section>
+
+        <section>
+          <PokeList pokemon={pokemon} />
+          <Paging totalResults={totalResults} />
+        </section>  
+      </main>
     </div>
   );
 }}
