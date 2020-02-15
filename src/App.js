@@ -40,11 +40,12 @@ async loadPoke() {
       <main>
         <section>
           <SearchPoke />
+          
+          <Paging totalResults={totalResults} />
         </section>
 
         <section>
           <PokeList pokemon={pokemon} />
-          <Paging totalResults={totalResults} />
         </section>  
       </main>
     </div>
