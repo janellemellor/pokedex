@@ -1,17 +1,55 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 import Header from './Header.js';
 import PokeList from './PokeList.js';
-import PokeItem from './PokeItem.js';
+import Paging from './Paging.js';
+import SearchPoke from './SearchPoke.js';
+import getPoke from './getPoke.js';
 
 
-class App extends Component {
-  
-  render()
-  return (
-   
-  );
+export default class App extends Component {
+state = { pokemon: [] };
+
+async loadPoke() {
+  const response = await getPoke(); 
+  const pokemon =  response.results;
+  const totalResults = response.count;
+  this.setState({ 
+    pokemon: pokemon,
+    totalResults: totalResults,
+   });
 }
 
-export default App;
+  async componentDidMount() {
+    await this.loadPoke();
+
+    window.addEventListener('hashchange', async () => {
+      await this.loadPoke();
+    });
+  }  
+
+
+  render() {
+    const { pokemon, totalResults } = this.state;
+  
+  return (
+    <div>
+      <header>
+        <Header />
+      </header>
+      <main>
+        <section>
+          <SearchPoke />
+          
+          <Paging totalResults={totalResults} />
+        </section>
+
+        <section>
+          <PokeList pokemon={pokemon} />
+        </section>  
+      </main>
+    </div>
+  );
+}}
+
+
