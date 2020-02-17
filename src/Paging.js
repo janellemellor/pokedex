@@ -67,7 +67,7 @@ export default class Paging extends Component {
                     disabled={pageToUse === 1 ? 'true' : ''}>
                     Previous     
                 </button>
-                <span>Page {pageToUse} of {lastPage}</span>
+                <span className='searchForm'>Page {pageToUse} of {lastPage}</span>
                 <button
                     onClick={() => this.updatePage(1)}
                     disabled={pageToUse === lastPage ? 'true' : ''}>

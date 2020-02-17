@@ -16,7 +16,6 @@ export default class SearchPoke extends Component {
     updateQuery() {
         const queryString = window.location.hash.slice(1);
         const searchParams = new URLSearchParams(queryString);
-        // const name = searchParams.get('pokemon');
 
         this.setState({
             searchInput: searchParams.get('pokemon') || "",
